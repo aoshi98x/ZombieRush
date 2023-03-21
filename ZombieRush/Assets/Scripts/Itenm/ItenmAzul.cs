@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Itenm : MonoBehaviour
+public class ItenmAzul : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +14,7 @@ public class Itenm : MonoBehaviour
             if (itemManager != null)
             {
 
-                itemManager.AumentarItenm();
+                itemManager.AumentarItenmAzul();
 
 
                 Destroy(gameObject);
@@ -22,5 +22,3 @@ public class Itenm : MonoBehaviour
         }
     }
 }
-
-

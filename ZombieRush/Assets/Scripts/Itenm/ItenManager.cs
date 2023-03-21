@@ -5,54 +5,138 @@ using TMPro;
 
 public class ItenManager : MonoBehaviour
 {
-    public GameObject PosionItem;
-    public TextMeshProUGUI contadorTexto;
-    public int contadorItenmInicial = 0;
-    public int contadorItenm = 0;
+    [SerializeField]private GameObject PosionItemVerde;
+    [SerializeField] private TextMeshProUGUI contadorTextoVerde;
+    [SerializeField] private int contadorItenmVerdeInicial = 0;
+    [SerializeField] private int contadorItenmVerde = 0;
+    [SerializeField] private GameObject PosionItemAzul;
+    [SerializeField] private TextMeshProUGUI contadorTextoAzul;
+    [SerializeField] private int contadorItenmAzulInicial = 0;
+    [SerializeField] private int contadorItenmAzul = 0;
+    [SerializeField] private GameObject PosionItemRojo;
+    [SerializeField] private TextMeshProUGUI contadorTextoRojo;
+    [SerializeField] private int contadorItenmRojoInicial = 0;
+    [SerializeField] private int contadorItenmRojo = 0;
+    void Update()
+    {
+        if (contadorTextoVerde != null)
+        {
+            contadorTextoVerde.text = contadorItenmVerde.ToString();
+        }
+        if (contadorTextoAzul != null)
+        {
+            contadorTextoAzul.text = contadorItenmAzul.ToString();
+        }
+        if (contadorTextoRojo != null)
+        {
+            contadorTextoRojo.text = contadorItenmRojo.ToString();
+        }
+    }
     void Start()
     {
 
         //GameObject Plataforma = GameObject.FindWithTag("ManagerPlataform");
 
 
-        contadorItenm = contadorItenmInicial = 0;
+        contadorItenmVerde = contadorItenmVerdeInicial = 0;
         ;
 
 
-        if (contadorTexto != null)
+        if (contadorTextoVerde != null)
         {
-            contadorTexto.text = contadorItenm.ToString();
+            contadorTextoVerde.text = contadorItenmVerde.ToString();
         }
 
     }
-    public void DisminuirItenm()
+    public void DisminuirItenmVerde()
     {
-        if (contadorItenm >= 1)
+        if (contadorItenmVerde >= 1)
         {
-            contadorItenm--;
-            if (contadorTexto != null)
+            contadorItenmVerde--;
+            if (contadorTextoVerde != null)
             {
-                contadorTexto.text = contadorItenm.ToString();
+                contadorTextoVerde.text = contadorItenmVerde.ToString();
             }
-            if (contadorItenm == 0)
+            if (contadorItenmVerde <= 1)
             {
-                PosionItem.SetActive(false);
+                PosionItemVerde.SetActive(false);
             }
         }
 
     }
-    public void AumentarItenm()
+    public void AumentarItenmVerde()
     {
-        contadorItenm++;
-        if (contadorTexto != null)
+        contadorItenmVerde++;
+        if (contadorTextoVerde != null)
         {
-            contadorTexto.text = contadorItenm.ToString();
+            contadorTextoVerde.text = contadorItenmVerde.ToString();
         }
-        if (contadorItenm == 0)
+        if (contadorItenmVerde >= 0)
         {
-            PosionItem.SetActive(false);
+            PosionItemVerde.SetActive(true);
         }
 
 
     }
+    public void AumentarItenmAzul()
+    {
+        contadorItenmAzul++;
+        if (contadorTextoAzul != null)
+        {
+            contadorTextoAzul.text = contadorItenmAzul.ToString();
+        }
+        if (contadorItenmAzul >= 0)
+        {
+            PosionItemAzul.SetActive(true);
+        }
+
+
+    }
+    public void AumentarItenmRojo()
+    {
+        contadorItenmRojo++;
+        if (contadorTextoRojo != null)
+        {
+            contadorTextoRojo.text = contadorItenmRojo.ToString();
+        }
+        if (contadorItenmRojo >= 1)
+        {
+            PosionItemRojo.SetActive(true);
+        }
+
+
+    }
+    public void DisminuirItenmAzul()
+    {
+        if (contadorItenmAzul >= 0)
+        {
+            contadorItenmAzul--;
+            if (contadorTextoAzul != null)
+            {
+                contadorTextoAzul.text = contadorItenmAzul.ToString();
+            }
+            if (contadorItenmAzul == 0)
+            {
+                PosionItemAzul.SetActive(false);
+            }
+        }
+    }
+    public void DisminuirItenmRojo()
+        {
+            if (contadorItenmRojo >= 1)
+            {
+            contadorItenmRojo--;
+                if (contadorTextoRojo != null)
+                {
+                contadorTextoRojo.text = contadorItenmRojo.ToString();
+                }
+                if (contadorItenmRojo >= 1)
+                {
+                PosionItemRojo.SetActive(false);
+                }
+            }
+
+        }
+
 }
+
