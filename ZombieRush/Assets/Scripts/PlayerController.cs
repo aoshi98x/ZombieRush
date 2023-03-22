@@ -1,40 +1,76 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody playerRB;
-    [SerializeField]float inputAngle = 60.0f; 
-    [SerializeField]float speedMov;
-    [SerializeField]Joystick touchControl;
+    [Header ("To make movement")]
 
-    // Start is called before the first frame update
+    [SerializeField]float speedMov;
+    Rigidbody playerRB;
+    [SerializeField]Transform meshTrans;
+
+    [Header ("Touch Joystick")]
+
+    [SerializeField]Joystick touchControl;
+    
+    Animator playerAnims;
+    ResetShoot underSc;
+
+    [Header ("Actions")]
+    [SerializeField] Button actionBtn;
+
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
+        touchControl = GameObject.Find("MoveJoystick").GetComponent<FloatingJoystick>();
+        playerAnims = GameObject.Find("NewPlayer").GetComponent<Animator>();
+        underSc = GameObject.Find("NewPlayer").GetComponent<ResetShoot>();
+        actionBtn = GameObject.Find("Action").GetComponent<Button>();
        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update() 
     {
-        RotationPl();
+        if(!underSc.shooting)
+        {
+            playerAnims.SetFloat("speed", touchControl.Vertical);
+            playerAnims.SetBool("isShooting", false);
+        }
+        else
+        {
+            playerAnims.SetFloat("speed", 0.0f);
+            playerAnims.SetBool("isShooting", true);
+        }
     }
+
     private void FixedUpdate() 
     {
-        Movement();
+        if(!underSc.shooting)
+        {
+            Movement();
+            playerAnims.SetBool("isShooting", false);
+        }
         
     }
     void Movement()
     {
-        transform.position += transform.forward * Time.deltaTime *(speedMov * touchControl.Vertical);
-        transform.position += transform.right * Time.deltaTime *(speedMov * touchControl.Horizontal);
-         //playerRB.MovePosition(transform.forward + input * Time.deltaTime * speedMov);
+        transform.Translate(Vector3.forward * touchControl.Vertical*speedMov);
     }
-    void RotationPl()
-    {
-        //Player Rotation
-        transform.Rotate(0.0f, touchControl.Horizontal * inputAngle, 0.0f);
+    private void OnTriggerStay(Collider other) {
+        
+        if(other.gameObject.CompareTag("Playable"))
+        {
+            actionBtn.interactable = true;
+        }
+    }
+    private void OnTriggerExit(Collider other) {
+        
+        if(other.gameObject.CompareTag("Playable"))
+        {
+            actionBtn.interactable = false;
+            GameManager.Instance.RestartAction();
+        }
     }
 }
