@@ -245,6 +245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shooting: 0
+  proyectile: {fileID: 2679785655303984670, guid: 7409ea811caf6eb49a8299695ef1c77c, type: 3}
+  pointShooting: {fileID: 6482402942976883249}
 --- !u!1 &1482925992497539876
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +484,7 @@ GameObject:
   - component: {fileID: 2999745316873638406}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -494,7 +496,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2516083739102365887}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.944484, y: 0.8454571, z: 4.430998}
   m_LocalScale: {x: 99.999985, y: 100, z: 99.99998}
   m_ConstrainProportionsScale: 0
@@ -549,6 +551,7 @@ MonoBehaviour:
   speedMov: 0.07
   meshTrans: {fileID: 0}
   touchControl: {fileID: 0}
+  actionBtn: {fileID: 0}
 --- !u!1 &2959206560030412994
 GameObject:
   m_ObjectHideFlags: 0
