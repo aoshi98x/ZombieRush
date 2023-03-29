@@ -12,9 +12,11 @@ public class EnemyCreator : MonoBehaviour
     [SerializeField] private Transform [] points;
     [SerializeField] private GameObject enemy;
     [SerializeField] private float timeEnemy;
-    private float timeToNext;
+    [SerializeField] private float timeToNext;
     [SerializeField]int cantEnemies;
     [SerializeField]int maxCantEnemies;
+    [SerializeField] GameObject winScreen;
+    [SerializeField] ManageData counts;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,11 @@ public class EnemyCreator : MonoBehaviour
                 EnemyOn();
             }
             
+        }
+        if(counts.enemyDestroy == 2)
+        {
+            winScreen.SetActive(true);
+            Time.timeScale = 0;
         }
     
     }

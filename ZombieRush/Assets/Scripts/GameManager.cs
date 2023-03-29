@@ -7,11 +7,15 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
-    public string sceneName; 
-    public bool doAction = false;
+    public string sceneName, nextLevel; 
+    public bool doAction;
     Scene currentScene;
     private bool isPaused;
-    FollowCam camSc;
+    [SerializeField] FollowCam camSc;
+    [SerializeField] ManageData counts;
+    [SerializeField] PlayerController playerSc;
+    [SerializeField] GameObject deadScreen, offUI;
+    [SerializeField] GameObject transition;
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,15 +30,20 @@ public class GameManager : MonoBehaviour
         
     }
     private void Start() {
-        
-        camSc = GameObject.Find("CameraTracking").GetComponent<FollowCam>();
+        counts.damageToPlayer = 0;
+        counts.damageToEnemy = 0;
+        counts.enemyDestroy = 0;
     }
 
-    void Update()
-    {
+    private void Update() {
         
+        if(playerSc.life <=0)
+        {
+            Time.timeScale = 0.0f;
+            deadScreen.SetActive(true);
+            offUI.SetActive(false);
+        }
     }
-
     public void UpdateState()
     {
         isPaused = !isPaused;
@@ -81,5 +90,10 @@ public class GameManager : MonoBehaviour
     public void RestartAction()
     {
         doAction = false;
+    }
+    public void CheckLevel()
+    {
+        transition.GetComponent<Animator>().SetBool("newLevel", true);
+        SceneManager.LoadScene(nextLevel);
     }
 }

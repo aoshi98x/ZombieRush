@@ -12,7 +12,10 @@ public class EnemyAI : MonoBehaviour
     public bool kill = false;
     public bool isAttack = false;
     Collider collider;
+    [SerializeField] ManageData counts;
     public int life;
+    [Header ("AudioClips")]
+    [SerializeField]AudioClip hurt, talk, dead;
 
     // Start is called before the first frame update
     void Start()
@@ -40,14 +43,24 @@ public class EnemyAI : MonoBehaviour
         }
         if(kill)
         {
+            counts.enemyDestroy += 1;
+            AudioManager.Instance.PlaySfx(dead);
             agent.speed = 0.0f;
             collider.enabled=false;
-            isAttack = false;
             enemyAnim.SetBool("isDead", true);
             enemyAnim.SetBool("isWalk", false);
             enemyAnim.SetBool("isATK", false);
             StartCoroutine(DestroyThis());
+            kill = false;
            
+        }
+        if(enemyAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            isAttack = true;
+        }
+        else
+        {
+            isAttack = false;
         }
         
     }
@@ -56,6 +69,7 @@ public class EnemyAI : MonoBehaviour
         if(other.gameObject.tag=="Player")
         {
             Debug.Log("Es el topo!");
+            AudioManager.Instance.PlaySfx(talk);
             enemyAnim.SetBool("isATK", true);
             enemyAnim.SetBool("isWalk", false);
             agent.speed = 0.0f;
@@ -77,7 +91,8 @@ public class EnemyAI : MonoBehaviour
     {
         if(other.gameObject.CompareTag("bullet"))
         {
-            life -= 1;
+            life -= counts.damageToEnemy;
+            AudioManager.Instance.PlaySfx(hurt);
             enemyAnim.SetBool("damageOn", true);
             enemyAnim.SetBool("isWalk", false);
             enemyAnim.SetBool("isATK", false);

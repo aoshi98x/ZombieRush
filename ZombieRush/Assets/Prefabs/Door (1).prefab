@@ -124,6 +124,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1382862726178188, guid: 6c59ef0028580ac429571adf93ff0a16, type: 3}
   m_PrefabInstance: {fileID: 8892823217363603974}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &2238685756731926633
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893850795529533322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0179048, y: 1, z: 1}
+  m_Center: {x: 0.13688591, y: 0.48, z: 2.3822315e-16}
 --- !u!114 &3083247185800102608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,19 +151,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorTrans: {fileID: 0}
   checkBool: {fileID: 0}
---- !u!65 &2238685756731926633
-BoxCollider:
+--- !u!1 &8894001245749061508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1249711693297026, guid: 6c59ef0028580ac429571adf93ff0a16, type: 3}
+  m_PrefabInstance: {fileID: 8892823217363603974}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1943673011
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8893850795529533322}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_GameObject: {fileID: 8894001245749061508}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.48, z: 0}
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.00001, y: 0.0050000004, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.0050000004}
+  m_TimeToStationary: 0.5
 --- !u!1001 &8892823217558543694
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8500955075435911426}
   - component: {fileID: 8500955075435911427}
   - component: {fileID: 8500955075435911484}
-  - component: {fileID: 8500955075435911425}
+  - component: {fileID: 2073478626}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,9 +53,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.0061538517
     y: 0
-    width: 1
+    width: 0.9876923
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -85,7 +85,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8500955075435911485}
   m_Enabled: 1
---- !u!114 &8500955075435911425
+--- !u!114 &2073478626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,17 +94,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8500955075435911485}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adeb8548e4429634aa24376af3498c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 85a0b8fcd0dc1074cbeb5a49ef1d6907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {fileID: 0}
-  camPos: {fileID: 0}
-  offsetX: 0
-  offsetY: 1.3
-  offsetZ: -1.2
-  touchCamControl: {fileID: 0}
-  smooth: 1
-  tiltAngle: 1
+  targetAspect: 2.14
+  borderColor: {r: 0, g: 0, b: 0, a: 0}
+  _border: {fileID: 0}
 --- !u!1 &8500955075736092421
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +149,9 @@ MonoBehaviour:
   camPos: {fileID: 0}
   offsetX: 0
   offsetY: -0.5
-  offsetZ: -0.2
+  offsetZ: 0.1
   touchCamControl: {fileID: 0}
   smooth: 1
   tiltAngle: 1
+  tiltAroundY: 0
+  horizontal: 0

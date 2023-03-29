@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8836d64eb5ed284d8f396687c11517a, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: 
-  pocionblue: 1
+  pocionBlue: 1
   pocionRed: 2
   pocionYellow: 3
   damageToPlayer: 0
-  damageToEnemy: 0
+  damageToEnemy: 1
+  enemyDestroy: 7746

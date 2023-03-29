@@ -6,7 +6,7 @@ public class DoorsMechanic : MonoBehaviour
 {
     [SerializeField]Transform doorTrans;
     [SerializeField]GameManager checkBool;
-    bool isPossible;
+    [SerializeField]bool isPossible;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +28,7 @@ public class DoorsMechanic : MonoBehaviour
             doorTrans.localPosition = new Vector3 (-0.505f, doorTrans.localPosition.y, 0.397f);
         }
     }
-    private void OnTriggerStay(Collider other) {
+    private void OnTriggerEnter(Collider other) {
         
         if(other.gameObject.CompareTag("Player"))
         {

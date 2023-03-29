@@ -44,3 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadc346bbd1df3a43960914de7bcc426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: Menu
+  nextLevel: 
+  doAction: 0
+  camSc: {fileID: 0}
+  counts: {fileID: 11400000, guid: 193470a6c8fc22c42b52c733c3357eb0, type: 2}
+  playerSc: {fileID: 0}
+  deadScreen: {fileID: 0}
+  offUI: {fileID: 0}
+  transition: {fileID: 0}
